@@ -1,4 +1,8 @@
 module.exports = {
   Restaurant: require("./restaurant"),
-  User: require("./user")
+  Dish: require("./dish"),
+  Table: require("./table"),
+  User: require("./user"),
+  Customer: require("./customer"),
+  Order: require("./order")
 };

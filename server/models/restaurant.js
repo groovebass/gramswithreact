@@ -26,6 +26,10 @@ const restaurantSchema = new Schema({
   tables: [{
     type: Schema.Types.ObjectId,
     ref: "Table"
+  }],
+  orders: [{
+    type: Schema.Types.ObjectId,
+    ref: "Order"
   }]
 });
 
