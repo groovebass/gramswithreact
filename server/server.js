@@ -1,4 +1,4 @@
-// Loading evnironmental variables here
+r// Loading evnironmental variables here
 if (process.env.NODE_ENV !== 'production') {
 	console.log('loading dev environments');
 	require('dotenv').config();

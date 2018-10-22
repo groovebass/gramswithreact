@@ -6,20 +6,16 @@ const customerSchema = new Schema({
         type: String, 
         required: true
     },
-    customerPhone: String,
-    required: false, 
-    validate: {
-        validator: value => /\d{3}-\d{3}-\d{4}/.test(value),
-        message: props => `${props.value} is not a phone number!`
+    customerPhone: {
+        type: String,
+        required: false, 
+        match: [/\d{3}-\d{3}-\d{4}/, "Please provide a phone number."]
     },
     customerEmail: {
         type: String,
         required: true,
         unique: true,
-        validate: {
-            validator: value => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value),
-            message: props => `${props.value} is not a valid email!`
-        }
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please provide a valid email."]
     },
     orders: [{
         type: Schema.Types.ObjectId,
