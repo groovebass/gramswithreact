@@ -124,10 +124,78 @@ const dishSeed = {
   ]
 }
 
+const tableSeed = {
+  zinBurger: [
+    {
+      tableNum: "Table 1"
+    },
+    {
+      tableNum: "Table 2"
+    },
+    {
+      tableNum: "Table 3"
+    },
+    {
+      tableNum: "Table 4"
+    },
+    {
+      tableNum: "Table 5"
+    },
+    {
+      tableNum: "Table 6"
+    },
+    {
+      tableNum: "Table 7"
+    },
+    {
+      tableNum: "Table 8"
+    },
+    {
+      tableNum: "Table 9"
+    },
+    {
+      tableNum: "Table 10"
+    },
+    {
+      tableNum: "Table 11"
+    },
+    {
+      tableNum: "Table 12"
+    }
+  ],
+  thaiCafe: [
+    {
+      tableNum: "Table 1"
+    },
+    {
+      tableNum: "Table 2"
+    },
+    {
+      tableNum: "Table 3"
+    },
+    {
+      tableNum: "Table 4"
+    },
+    {
+      tableNum: "Table 5"
+    },
+    {
+      tableNum: "Table 6"
+    },
+    {
+      tableNum: "Table 7"
+    },
+    {
+      tableNum: "Table 8"
+    }
+  ]
+}
+
 db.User.collection.drop();
 db.Customer.collection.drop();
 db.Restaurant.collection.drop();
 db.Dish.collection.drop();
+db.Table.collection.drop();
 
 
 
@@ -204,3 +272,26 @@ dishSeed.thaiCafe.map(dish => {
   })
 });
 
+tableSeed.zinBurger.map(table => {
+  db.Table.create(table)
+  .then(created => (
+    db.Restaurant.findOneAndUpdate({restaurantName: "Zinburger Wine & Burger Bar"}, {$push: {tables: created._id}})
+  ))
+  .then(updated => console.log(updated))
+  .catch(err => {
+    console.log(err);
+    process.exit(1);
+  });
+});
+
+tableSeed.thaiCafe.map(table => {
+  db.Table.create(table)
+  .then(created => (
+    db.Restaurant.findOneAndUpdate({restaurantName: "Thai Cafe"}, {$push: {tables: created._id}})
+  ))
+  .then(updated => console.log(updated))
+  .catch(err => {
+    console.log(err);
+    process.exit(1);
+  });
+});
