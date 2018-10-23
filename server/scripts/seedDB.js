@@ -191,11 +191,28 @@ const tableSeed = {
   ]
 }
 
+const orderSeed = {
+  zinBurger: [
+    {
+      dishName:"SAMBURGER", 
+      category:"Entree",
+      dishPrice:12.00,
+      notes: "Add Jalapenos"
+    },
+    {
+      dishName:"RINGER", 
+      category:"Entree",
+      dishPrice:11.50
+    }
+  ]
+}
+
 db.User.collection.drop();
 db.Customer.collection.drop();
 db.Restaurant.collection.drop();
 db.Dish.collection.drop();
 db.Table.collection.drop();
+db.Order.collection.drop();
 
 
 
@@ -203,7 +220,7 @@ db.User
   .deleteOne({})
   .then(() => db.User.create(userSeed))
   .then(created => {
-    console.log(created);
+    console.log("success");
   })
   .catch(err => {
     console.error(err);
@@ -214,9 +231,9 @@ db.Customer
   .deleteOne({})
   .then(() => db.Customer.create(customerSeed))
   .then(created => {
-    console.log(created)
+    console.log("success")
     db.User.findOneAndUpdate({username: "JohnD"}, {$set: {customer: created._id}})
-    .then(updated => console.log(updated))
+    .then(updated => console.log("success"))
     .catch(err => {
       console.error(err);
       process.exit(1);
@@ -231,7 +248,7 @@ db.Restaurant
   .deleteMany({})
   .then(() => db.Restaurant.create(restaurantSeed.zinBurger))
   .then(created => {
-    console.log(created);
+    console.log("success");
   })
   .catch(err => {
     console.log(err);
@@ -241,7 +258,7 @@ db.Restaurant
   db.Restaurant
   .create(restaurantSeed.thaiCafe)
   .then(created => {
-    console.log(created);
+    console.log("success");
   })
   .catch(err => {
     console.log(err);
@@ -253,7 +270,7 @@ dishSeed.zinBurger.map(dish => {
   .then(created => (
     db.Restaurant.findOneAndUpdate({restaurantName: "Zinburger Wine & Burger Bar"}, {$push: {dishes: created._id}})
   ))
-  .then(updated => console.log(updated))
+  .then(updated => console.log("success"))
   .catch(err => {
     console.log(err);
     process.exit(1);
@@ -265,7 +282,7 @@ dishSeed.thaiCafe.map(dish => {
   .then(created => (
     db.Restaurant.findOneAndUpdate({restaurantName: "Thai Cafe"}, {$push: {dishes: created._id}})
   ))
-  .then(updated => console.log(updated))
+  .then(updated => console.log("success"))
   .catch(err => {
     console.log(err);
     process.exit(1);
@@ -277,7 +294,7 @@ tableSeed.zinBurger.map(table => {
   .then(created => (
     db.Restaurant.findOneAndUpdate({restaurantName: "Zinburger Wine & Burger Bar"}, {$push: {tables: created._id}})
   ))
-  .then(updated => console.log(updated))
+  .then(updated => console.log("success"))
   .catch(err => {
     console.log(err);
     process.exit(1);
@@ -289,9 +306,26 @@ tableSeed.thaiCafe.map(table => {
   .then(created => (
     db.Restaurant.findOneAndUpdate({restaurantName: "Thai Cafe"}, {$push: {tables: created._id}})
   ))
-  .then(updated => console.log(updated))
+  .then(updated => console.log("success"))
   .catch(err => {
     console.log(err);
     process.exit(1);
   });
 });
+
+
+  orderSeed.zinBurger.map(order => {
+    db.Order.create(order)
+    .then(created => (
+      db.Restaurant.findOneAndUpdate({restaurantName: "Zinburger Wine & Burger Bar"}, {$push: {orders: created._id}})
+    ))
+    .then(updated => console.log("success"))
+    .catch(err => {
+      console.log(err);
+      process.exit(1);
+    });
+  });
+
+
+
+
