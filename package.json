@@ -1,5 +1,5 @@
 {
-  "name": "reactreadinglist-auth-server",
+  "name": "grams-server",
   "version": "1.0.0",
   "description": "Full Stack React App with Authentication",
   "main": "server/server.js",

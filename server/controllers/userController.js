@@ -55,5 +55,5 @@ module.exports = {
 			delete cleanUser.password;
 		}
 		res.json({ user: cleanUser });
-	}
+  }
 };

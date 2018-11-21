@@ -38,7 +38,7 @@ const orderSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    //part of put method to indicate the tim when the order has been filled
+    //part of put method to indicate the time when the order has been filled
     timeFilled: {
         type: Date,
         required: false
