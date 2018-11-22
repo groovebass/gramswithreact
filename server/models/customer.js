@@ -21,10 +21,10 @@ const customerSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Order"
     }],
-    table: {
+    table: [{
         type: Schema.Types.ObjectId, 
         ref: "Table"
-    }
+    }]
 });
 
 const Customer = mongoose.model("Customer", customerSchema);
