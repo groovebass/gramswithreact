@@ -13,7 +13,12 @@ const tableSchema = new Schema({
   occupied: {
       type: Boolean,
       default: false
-  }
+  },
+  occupiedBy: {
+      type: String,
+      ref: "Customer"
+  },
+  timeOccupied: Date
 });
 
 const Table = mongoose.model("Table", tableSchema);
