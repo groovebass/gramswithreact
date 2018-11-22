@@ -40,6 +40,12 @@ module.exports = {
       .findByIdAndUpdate(req.params.id, {$pull: {orders: req.body.orders}})
       .then(dbRestaurant => res.json({message: "Order status updated"}))
   },
+  addDish: (req, res) => {
+    db.Restaurant
+      .findByIdAndUpdate(req.params.id, {$push: {dishes: req.body.dishes}})
+      .then(dbRestaurant => res.json(dbRestaurant))
+      .catch(err => res.status(422).json(err)); 
+  },
   removeDish: (req, res) => {
     db.Restaurant
       .findByIdAndUpdate(req.params.id, {$pull: {dishes: req.body.dishes}})
