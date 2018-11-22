@@ -55,5 +55,12 @@ module.exports = {
 			delete cleanUser.password;
 		}
 		res.json({ user: cleanUser });
+  },
+  findById: (req, res) => {
+    db.User
+      .findById(req.params.id)
+      .populate("customer")
+      .then(dbCustomer => res.json({customer: dbCustomer.customer}))
+      .catch(err => res.status(422).json(err));
   }
 };
