@@ -15,7 +15,7 @@ const tableSchema = new Schema({
       default: false
   },
   occupiedBy: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "Customer"
   },
   timeOccupied: Date

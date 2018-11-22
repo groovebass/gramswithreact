@@ -50,10 +50,29 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
 
+    //also add TableOccupant within this query
     updateTable: (req, res) => {
         //req.params.id refers to tableId
+        if (req.body.occupied) {
+            db.Table
+                .findByIdAndUpdate(req.params.id, {
+                    occupied: req.body.occupied,
+                    occupiedBy: req.body.customerId,
+                    timeOccupied: Date.now
+                })
+                .then(dbTable => res.json(dbTable))
+                .catch(err => res.status(422).json(err));
+        } else if (req.body.section) {
+            const { section } = req.body
+            db.Table
+                .findByIdAndUpdate(req.params.id, {section})
+                .then(dbTable => res.json(dbTable))
+                .catch(err => res.status(422).json(err));
+        }
+    },
+    removeTableOccupant: (req, res) => {
         db.Table
-            .findByIdAndUpdate(req.params.id, req.body)
+            .findByIdAndUpdate(req.params.id, {$unset: { occupiedBy: "", timeOccupied: ""}, $set: {occupied: false}})
             .then(dbTable => res.json(dbTable))
             .catch(err => res.status(422).json(err));
     },
