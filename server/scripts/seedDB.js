@@ -217,7 +217,7 @@ db.Order.collection.drop();
 
 
 db.User
-  .deleteOne({})
+  .remove()
   .then(() => db.User.create(userSeed))
   .then(created => {
     console.log("success");
@@ -228,7 +228,7 @@ db.User
   });
 
 db.Customer 
-  .deleteOne({})
+  .remove()
   .then(() => db.Customer.create(customerSeed))
   .then(created => {
     console.log("success")
@@ -245,7 +245,7 @@ db.Customer
   });
 
 db.Restaurant
-  .deleteMany({})
+  .remove()
   .then(() => db.Restaurant.create(restaurantSeed.zinBurger))
   .then(created => {
     console.log("success");
