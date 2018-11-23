@@ -28,3 +28,5 @@ router
 router
     .route("remove-dishes/:id")
     .put(restaurantController.removeDish);
+
+module.exports = router;
