@@ -20,12 +20,20 @@ export default {
     removeDish: dishId => axios.delete(`/api/dishes/${dishId}`),
     createDish: (restaurantId, data) => axios.post(`/api/dishes/restaurant/${restaurantId}`, data),
 
-    //Table Routes
+    // Table Routes
     getAllTablesAcrossRestaurants: query => (query) ? axios.get(`/api/tables/${query}`) : axios.get(`/api/tables`),
     getTables: tableId => axios.get(`/api/tables/${tableId}`),
     createTables: (restaurantId, data) => axios.post(`/api/tables/restaurant/${restaurantId}`, data),
     updateTable: (tableId, data) => axios.put(`/api/tables/${tableId}`, data),
     removeTable: tableId => axios.delete(`/api/tables/${tableId}`),
+
+    // Customer Routes
+    getAllCustomers: () => axios.get("/api/customers/"),
+    createCustomer: (userId, data) => axios.post(`/api/customers/user/${userId}`, data),
+    updateCustomerAdd: customerId => axios.put(`/api/customers/update-customer-add/${customerId}`, data),
+    updateCustomerRemove: customerId => axios.put(`/api/customers/update-customer-remove/${customerId}`, data),
+    deleteCustomer: customerId => axios.delete(`/api/customers/${customerId}`),
+    
 
 
 

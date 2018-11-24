@@ -4,7 +4,10 @@ const customerController = require("../../controllers/customerController");
 // "/api/customers/"
 router
     .route("/")
-    .get(customerController.findAll)
+    .get(customerController.findAll);
+// "/api/customers/user/:id"
+router
+    .route("/user/:id")
     .post(customerController.createCustomer);
 
 // "/api/customers/:id"
