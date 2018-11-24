@@ -3,12 +3,21 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: (req, res) => {
-    db.Restaurant
-      .find()
-      .populate("dishes")
-      .populate("tables")
-      .then(dbRestaurant => res.json(dbRestaurant))
-      .catch(err => res.status(422).json(err));
+    if (req.query) {
+      db.Restaurant
+        .find(req.query)
+        .populate("dishes")
+        .populate("tables")
+        .then(dbRestaurant => res.json(dbRestaurant))
+        .catch(err => res.status(422).json(err));
+    } else {
+      db.Restaurant
+        .find(req.query)
+        .populate("dishes")
+        .populate("tables")
+        .then(dbRestaurant => res.json(dbRestaurant))
+        .catch(err => res.status(422).json(err));
+    }
   },
   findById: (req, res) => {
     db.Restaurant
