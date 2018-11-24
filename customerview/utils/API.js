@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export default {
-    //Restaurant Routes
+    // Restaurant Routes
     getAllRestaurants: query => (query) ? axios.get(`/api/restaurants/${query}`) : axios.get(`/api/restaurants`),
     createRestaurant: data => axios.post(`/api/restaurants/`, data),
     getRestaurant: restaurantId => axios.get(`/api/restaurants/${restaurantId}`),
-        //update Restaurant's general information
+        // update Restaurant's general information
     updateRestaurant: (restaurantId, data) => axios.put(`/api/restaurants/${restaurantId}`, data),
     removeRestaurant: restaurantId => axios.delete(`/api/restaurants/${restaurantId}`),
     addOrderToRestaurant: (restaurantId, data) => axios.put(`/api/restaurants/add-orders/${restaurantId}`, data),
@@ -13,7 +13,7 @@ export default {
     addDishToRestaurant: (restaurantId, data) => axios.put(`/api/restaurants/add-dishes/${restaurantId}`, data),
     removeDishFromRestaurant: (restaurantId, data) => axios.put(`/api/restaurants/remove-dishes/${restaurantId}`, data),
 
-    //Dish Routes
+    // Dish Routes
     getDishesAcrossRestaurants: query => (query) ? axios.get(`/api/dishes/${query}`) : axios.get(`/api/dishes/`),
     getDish: dishId => axios.get(`/api/dishes/${dishId}`),
     updateDish: (dishId, data) => axios.put(`/api/dishes/${dishId}`, data),
@@ -34,7 +34,14 @@ export default {
     updateCustomerRemove: customerId => axios.put(`/api/customers/update-customer-remove/${customerId}`, data),
     deleteCustomer: customerId => axios.delete(`/api/customers/${customerId}`),
     
+    // User Routes
+    getCustomerFromUser: userId => axios.get(`/api/users/${userId}`),
 
-
+    // Order Routes
+    getAllOrdersAcrossRestaurants: query => (query) ? axios.get(`/api/orders/${query}`) : axios.get(`/api/orders`),
+    createOrder: data => axios.post(`/api/orders`, data),
+    getOrderById: orderId => axios.get(`/api/orders/${orderId}`),
+    updateOrder: (orderId, data) => axios.put(`/api/orders/${orderId}`, data),
+    removeOrder: orderId => axios.delete(`/api/orders/${orderId}`)
 
 }
