@@ -21,6 +21,11 @@ export default {
     createDish: (restaurantId, data) => axios.post(`/api/dishes/restaurant/${restaurantId}`, data),
 
     //Table Routes
+    getAllTablesAcrossRestaurants: query => (query) ? axios.get(`/api/tables/${query}`) : axios.get(`/api/tables`),
+    getTables: tableId => axios.get(`/api/tables/${tableId}`),
+    createTables: (restaurantId, data) => axios.post(`/api/tables/restaurant/${restaurantId}`, data),
+    updateTable: (tableId, data) => axios.put(`/api/tables/${tableId}`, data),
+    removeTable: tableId => axios.delete(`/api/tables/${tableId}`),
 
 
 
