@@ -251,7 +251,7 @@ db.Restaurant
   .remove()
   .then(() => db.Restaurant.create(restaurantSeed.zinBurger))
   .then(created => {
-    console.log("success");
+    console.log(created);
   })
   .catch(err => {
     console.log(err);

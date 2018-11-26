@@ -9,19 +9,41 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import API from '../utils/API';
 
 import { MonoText } from '../components/StyledText';
 
+
 export default class HomeScreen extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      restaurants: []
+    }
+  }
+
   static navigationOptions = {
     header: null,
   };
 
+  componentWillMount() {
+    this.restaurants();
+  }
+
+  restaurants = () => {
+    API.getAllRestaurants()
+      .then(dbRestaurant => this.setState({restaurants: dbRestaurant}))
+      .catch(err => console.log(err));
+  }
+
   render() {
+    console.log(this.state.restaurants);
     return (
       <View style={styles.container}>
 
         <View>
+        <Text style={{color: 'white'}}>In the app</Text>
+        { (this.state.restaurants) ? this.state.restaurants.map(r => <Text style={{color: 'white'}}>{r.restaurantName}</Text>) : <Text style={{color: 'white'}}>Will show Here</Text> }
           
         </View>
 
@@ -45,7 +67,7 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-          Hey mom, hows it going? - Logan {learnMoreButton}
+          Development Mode.
         </Text>
       );
     } else {

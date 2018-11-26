@@ -8,6 +8,7 @@ module.exports = {
         .find(req.query)
         .populate("dishes")
         .populate("tables")
+        .populate("orders")
         .then(dbRestaurant => res.json(dbRestaurant))
         .catch(err => res.status(422).json(err));
     } else {
@@ -15,6 +16,7 @@ module.exports = {
         .find(req.query)
         .populate("dishes")
         .populate("tables")
+        .populate("orders")
         .then(dbRestaurant => res.json(dbRestaurant))
         .catch(err => res.status(422).json(err));
     }
@@ -24,6 +26,7 @@ module.exports = {
       .findById(req.params.id)
       .populate("dishes")
       .populate("tables")
+      .populate("orders")
       .then(dbRestaurant => res.json(dbRestaurant))
       .catch(err => res.status(422).json(err));
   },
