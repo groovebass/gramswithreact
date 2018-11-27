@@ -33,7 +33,12 @@ module.exports = {
   create: (req, res) => {
     db.Restaurant
       .create(req.body)
-      .then(dbRestaurant => res.json(dbRestaurant))
+      .then(dbRestaurant => {
+        const restaurantId = dbRestaurant._id;
+        return db.Administrator
+                    .findByIdAndUpdate(req.params.id, {$push: {restaurants: restaurantId}});
+      })
+      .then(dbAdmin => res.json(dbAdmin))
       .catch(err => res.status(422).json(err));
   },
   update: (req, res) => {

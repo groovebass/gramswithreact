@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
     // Restaurant Routes
     getAllRestaurants: query => (query) ? axios.get(`/api/restaurants/${query}`) : axios.get(`/api/restaurants`),
-    createRestaurant: data => axios.post(`/api/restaurants/`, data),
+    createRestaurant: (adminId, data) => axios.post(`/api/restaurants/${adminId}`, data),
     getRestaurant: restaurantId => axios.get(`/api/restaurants/${restaurantId}`),
         // update Restaurant's general information
     updateRestaurant: (restaurantId, data) => axios.put(`/api/restaurants/${restaurantId}`, data),
