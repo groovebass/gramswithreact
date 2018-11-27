@@ -27,15 +27,15 @@ export default {
     updateTable: (tableId, data) => axios.put(`/api/tables/${tableId}`, data),
     removeTable: tableId => axios.delete(`/api/tables/${tableId}`),
 
-    // Customer Routes
-    getAllCustomers: () => axios.get("/api/customers/"),
-    createCustomer: (userId, data) => axios.post(`/api/customers/user/${userId}`, data),
-    updateCustomerAdd: (customerId, data) => axios.put(`/api/customers/update-customer-add/${customerId}`, data),
-    updateCustomerRemove: (customerId, data) => axios.put(`/api/customers/update-customer-remove/${customerId}`, data),
-    deleteCustomer: customerId => axios.delete(`/api/customers/${customerId}`),
+    // Admin Routes
+    getAllAdmins: query => (query) ? axios.get(`/api/administrator/${query}`) : axios.get(`/api/administrator`),
+    getAdmin: adminId => axios.get(`/api/administrator/${adminId}`),
+    createAdmin: (userId, data) => axios.post(`/api/administrator/${userId}`, data),
+    updateAdmin: (adminId, data) => axios.put(`/api/administrator/${adminId}`, data),
+    removeAdmin: adminId => axios.delete(`/api/administrator/${adminId}`),
     
     // User Routes
-    getCustomerFromUser: userId => axios.get(`/api/users/${userId}`),
+    getAdminFromUser: userId => axios.get(`/api/users/${userId}`),
 
     // Order Routes
     getAllOrdersAcrossRestaurants: query => (query) ? axios.get(`/api/orders/${query}`) : axios.get(`/api/orders`),
