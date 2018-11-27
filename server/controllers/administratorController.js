@@ -32,25 +32,26 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
-    addToAdmin: (req, res) => {
+    updateAdmin: (req, res) => {
         //req.body.restaurants, the value is an array
         if (req.body.restaurants) {
-            db.Administrator
-                .findByIdAndUpdate(req.params.id, {$push: {restaurants: req.body.restaurants}})
-                .then(dbAdmin => res.json(dbAdmin))
-                .catch(err => res.status(422).json(err));
+            if (req.body.manage === "add") {
+                db.Administrator
+                    .findByIdAndUpdate(req.params.id, {$push: {restaurants: req.body.restaurants}})
+                    .then(dbAdmin => res.json(dbAdmin))
+                    .catch(err => res.status(422).json(err));
+            } else if (req.body.manage === "remove") {
+                db.Administrator
+                    .findByIdAndUpdate(req.params.id, {$pull: {restaurants: req.body.restaurants}})
+                    .then(dbAdmin => res.json(dbAdmin))
+                    .catch(err => res.status(422).json(err));
+            }
         } else {
             db.Administrator
                 .findByIdAndUpdate(req.params.id, req.body)
                 .then(dbAdmin => res.json(dbAdmin))
                 .catch(err => res.status(422).json(err));
         }
-    },
-    removeRestaurantFromAdmin: (req, res) => {
-        db.Administrator
-                .findByIdAndUpdate(req.params.id, {$pull: {restaurants: req.body.restaurants}})
-                .then(dbAdmin => res.json(dbAdmin))
-                .catch(err => res.status(422).json(err));
     },
     removeAdmin: (req, res) => {
         db.Administrator
