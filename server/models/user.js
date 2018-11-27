@@ -8,7 +8,9 @@ const userSchema = new Schema({
 	firstName: { type: String, unique: false },
 	lastName: { type: String, unique: false },
   	username: { type: String, unique: false, required: false },
-  	password: { type: String, unique: false, required: false },
+	password: { type: String, unique: false, required: false },
+	accountType: { type: String, enum: ["Admin", "Customer"]},
+	administrator: { type: Schema.Types.ObjectId, ref: "Administrator" },
   	customer: { type: Schema.Types.ObjectId, ref: "Customer"}
 });
 

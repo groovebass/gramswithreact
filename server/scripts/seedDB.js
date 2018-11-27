@@ -31,7 +31,7 @@ const restaurantSeed = {
     restaurantAddress: "2501 University Dr, Durham, NC 27707",
     restaurantImg: "https://images.unsplash.com/photo-1534345115699-7be8b13815ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=77a0221b3741bcf490ba382a9d6f3b0f&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb",
     restaurantDescription: "Family-run spot serving standard Thai dishes plus sushi in a polished, laid-back setting.",
-    category: "Asian"
+    category: "Asian "
   }
 }
 

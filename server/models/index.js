@@ -4,5 +4,6 @@ module.exports = {
   Table: require("./table"),
   User: require("./user"),
   Customer: require("./customer"),
-  Order: require("./order")
+  Order: require("./order"),
+  Administrator: require("./administrator")
 };

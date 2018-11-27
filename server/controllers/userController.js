@@ -60,6 +60,7 @@ module.exports = {
     db.User
       .findById(req.params.id)
       .populate("customer")
+      .populate("administrator")
       .then(dbCustomer => res.json({customer: dbCustomer.customer}))
       .catch(err => res.status(422).json(err));
   }
