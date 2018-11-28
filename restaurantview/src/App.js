@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 import './App.css';
 import { Layout, Menu } from 'antd';
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 class App extends Component {
   state = {
@@ -19,19 +20,7 @@ class App extends Component {
     return (
       <div className="App">
       <Layout>
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px', textAlign: 'right'}}
-          >
-            <Menu.Item key="1">Register</Menu.Item>
-            <Menu.Item key="2">Login</Menu.Item>
-            <Menu.Item key="3">Logout</Menu.Item>
-          </Menu>
-        </Header>
+        <Header />
         <Layout>
           <Sider width={200} 
             collapsible
