@@ -3,7 +3,7 @@ const styleHeader = {
         backgroundColor: "#fff",
         marginBottom: "2vh",
         borderBottom: "solid",
-        borderStyle: "rgba(92, 77, 92, 1)",
+        borderStyle: "rgba(92, 77, 92, 0.7)",
         borderWidth: "3px",
     },
     menu: {
@@ -28,6 +28,19 @@ const styleHeader = {
         borderWidth: "1px",
         borderStyle: "rgba(92, 77, 92, 1)",
         height: "55px"
+    },
+    navDiv: {
+        display: "inline-block",
+        margin: "0 1vw"
+
+    },
+    nav: {
+        textAlign: "right",
+        color: "rgba(92, 77, 92, 1)"
+    },
+    helloUser: {
+        marginLeft: "10px",
+        color: "rgba(92, 77, 92, 1)"
     }
 }
 

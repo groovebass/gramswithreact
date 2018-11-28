@@ -26,7 +26,8 @@ class App extends Component {
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
-            style={{ background: '#fff' }}>
+            style={{ background: "#fff" }}
+            >
             <Navbar />   
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
