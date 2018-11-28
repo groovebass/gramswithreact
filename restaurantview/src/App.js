@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
 import './App.css';
+import styleApp from './styleApp';
 import { Layout, Menu } from 'antd';
 
 const { Content, Sider } = Layout;
@@ -26,13 +27,13 @@ class App extends Component {
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
-            style={{ background: "#fff" }}
+            style={{background: "#fff"}}
             >
-            <Navbar />   
+            <Navbar collapsed={this.state.collapsed}/>   
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
             
-            <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+            <Content style={styleApp.content}>
               Content
             </Content>
           </Layout>

@@ -16,7 +16,8 @@ const HeaderDiv = props => (
                 </Col>
                 <Col span={5}>
                     <div style={style.helloUser}>
-                        <h4>Hello User</h4>
+                        {(props.loggedIn) ? <h4>Hello User</h4> : <h4>Restaurant Management Made Easy</h4>}
+                        
                     </div>
                 </Col>
                 <Col span={16}>
