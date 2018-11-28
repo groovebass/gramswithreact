@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
       <Layout>
-        <Header />
+        <Header loggedIn={this.state.loggedIn}/>
         <Layout>
           <Sider width={200} 
             collapsible
