@@ -34,73 +34,106 @@ class RegistrationForm extends React.Component {
           </Col>
           <Col span={12}>
             <Form onSubmit={this.handleSubmit}>
-              <FormItem
-                label="E-mail"
-              >
-                {getFieldDecorator('email', {
-                  rules: [{
-                    type: 'email', message: 'The input is not valid E-mail!',
-                  }, {
-                    required: true, message: 'Please input your E-mail!',
-                  }],
-                })(
-                  <Input />
-                )}
-              </FormItem>
-              <FormItem
-                label="Password"
-              >
-                {getFieldDecorator('password', {
-                  rules: [{
-                    required: true, message: 'Please input your password!',
-                  }, {
-                    validator: this.validateToNextPassword,
-                  }],
-                })(
-                  <Input type="password" />
-                )}
-              </FormItem>
-              <FormItem
-                label="Confirm Password"
-              >
-                {getFieldDecorator('confirm', {
-                  rules: [{
-                    required: true, message: 'Please confirm your password!',
-                  }, {
-                    validator: this.compareToFirstPassword,
-                  }],
-                })(
-                  <Input type="password" onBlur={this.handleConfirmBlur} />
-                )}
-              </FormItem>
-              <FormItem
-                label={(
-                  <span>
-                    Nickname&nbsp;
-                    <Tooltip title="What do you want others to call you?">
-                      <Icon type="question-circle-o" />
-                    </Tooltip>
-                  </span>
-                )}
-              >
-                {getFieldDecorator('username', {
-                  rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
-                })(
-                  <Input />
-                )}
-              </FormItem>
-              <FormItem
-                label="Phone Number"
-              >
-                {getFieldDecorator('phone', {
-                  rules: [{ required: true, message: 'Please input your phone number!' }],
-                })(
-                  <Input style={{ width: '100%' }} />
-                )}
-              </FormItem>
-              <FormItem>
-                <Button type="primary" htmlType="submit" style={styleRegis.btn}>Register</Button>
-              </FormItem>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <FormItem
+                    label="First Name"
+                  >
+                    {getFieldDecorator('firstName', {
+                      rules: [{ required: true, message: 'Please input your first name.', whitespace: true }],
+                    })(
+                      <Input />
+                    )}
+                  </FormItem>
+                </Col>
+                <Col span={12}>
+                  <FormItem
+                    label="Last Name"
+                  >
+                    {getFieldDecorator('lastName', {
+                      rules: [{ required: true, message: 'Please input your last name.', whitespace: true }],
+                    })(
+                      <Input />
+                    )}
+                  </FormItem>
+                </Col>
+              </Row>
+              <Row>
+                <FormItem
+                    label="Username"
+                  >
+                    {getFieldDecorator('username', {
+                      rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
+                    })(
+                      <Input />
+                    )}
+                  </FormItem>
+              </Row>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <FormItem
+                    label="Password"
+                  >
+                    {getFieldDecorator('password', {
+                      rules: [{
+                        required: true, message: 'Please input your password!',
+                      }, {
+                        validator: this.validateToNextPassword,
+                      }],
+                    })(
+                      <Input type="password" />
+                    )}
+                  </FormItem>
+                </Col>
+                <Col span={12}>
+                  <FormItem
+                    label="Confirm Password"
+                  >
+                    {getFieldDecorator('confirm', {
+                      rules: [{
+                        required: true, message: 'Please confirm your password!',
+                      }, {
+                        validator: this.compareToFirstPassword,
+                      }],
+                    })(
+                      <Input type="password" onBlur={this.handleConfirmBlur} />
+                    )}
+                  </FormItem>
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <FormItem
+                    label="E-mail"
+                  >
+                    {getFieldDecorator('email', {
+                      rules: [{
+                        type: 'email', message: 'The input is not valid E-mail!',
+                      }, {
+                        required: true, message: 'Please input your E-mail!',
+                      }],
+                    })(
+                      <Input />
+                    )}
+                  </FormItem>
+                </Col>
+                <Col span={12}>
+                  <FormItem
+                    label="Phone Number"
+                  >
+                    {getFieldDecorator('phone', {
+                      rules: [{ required: true, message: 'Please input your phone number!' }],
+                    })(
+                      <Input style={{ width: '100%' }} />
+                    )}
+                  </FormItem>
+                </Col>
+              </Row>
+              <Row>
+                <FormItem>
+                  <Button type="primary" htmlType="submit" style={styleRegis.btn}>Register</Button>
+                </FormItem>
+              </Row>
             </Form>
           </Col>
         </Row>
