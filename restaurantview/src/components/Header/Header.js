@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout, Menu, Row, Col} from 'antd';
 import style from './style';
 import gramsLogo from "./images/grams-logo.png";
@@ -11,7 +12,7 @@ const HeaderDiv = props => (
             <Row type="flex" gutter={32}>
                 <Col span={3}>
                     <div style={style.imgDiv}>
-                        <img alt="grams-logo" src={gramsLogo} style={style.logo}/>
+                        <Link to="/"><img alt="grams-logo" src={gramsLogo} style={style.logo}/></Link>
                     </div>
                 </Col>
                 <Col span={15}>
@@ -34,7 +35,7 @@ const HeaderDiv = props => (
                                 return (
                                     <div style={style.nav}>
                                         <span style={style.navDiv}>
-                                            <h4>Create an Account</h4>
+                                            <Link to="/register"><h4>Create an Account</h4></Link>
                                         </span>
                                         <span>
                                             <h4 style={style.navDiv}>Login</h4>

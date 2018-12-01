@@ -33,7 +33,7 @@ class RegistrationForm extends React.Component {
             <Pitch />
           </Col>
           <Col span={12}>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} style={styleRegis.form}>
               <Row gutter={16}>
                 <Col span={12}>
                   <FormItem

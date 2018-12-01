@@ -21,6 +21,13 @@ const styleRegis = {
         background: "rgba(92, 77, 92, 0.8)",
         color: "#fff",
         borderStyle: "rgba(92, 77, 92, 1)"
+    },
+    form: {
+        borderLeft: "dotted",
+        borderWidth: "1px",
+        borderStyle: "rgba(92, 77, 92, 1)",
+        padding: "0 2vw",
+        margin: "2vh 0"
     }
 };
 
