@@ -8,19 +8,19 @@ const { Header } = Layout;
 const HeaderDiv = props => (
     <Layout>
         <Header style={style.header} className="header">
-            <Row>
+            <Row type="flex" gutter={32}>
                 <Col span={3}>
                     <div style={style.imgDiv}>
                         <img alt="grams-logo" src={gramsLogo} style={style.logo}/>
                     </div>
                 </Col>
-                <Col span={5}>
+                <Col span={15}>
                     <div style={style.helloUser}>
                         {(props.loggedIn) ? <h4>Hello User</h4> : <h4>Restaurant Management Made Easy</h4>}
                         
                     </div>
                 </Col>
-                <Col span={16}>
+                <Col span={6}>
                     {(() => {
                             if (props.loggedIn) {
                                 return (
