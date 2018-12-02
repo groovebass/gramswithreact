@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
 import Registration from './pages/Registration/Registration';
+import Login from './pages/LoginDrawer/Login';
 import Home from './pages/Home/Home';
 import './App.css';
 import styleApp from './styleApp';
@@ -14,7 +15,12 @@ class App extends Component {
   state = {
     loggedIn: false,
     collapsed: false,
-    user: {}
+    user: {},
+    loginVisibility: true
+  }
+
+  loginOnClose = () => {
+    this.setState({loginVisibility: !this.state.loginVisibility})
   }
 
   onCollapse = () => {
@@ -40,11 +46,11 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" render={() => <Home user={this.state.user}/>} />
                 <Route exact path="/register" component={Registration} />
+                <Route exact path="/login" render={() => <Login onClose={this.loginOnClose} visible={this.state.loginVisibility} />} />
               </Switch>
             </Content>
           </Layout>
         </Layout>
-
       </Layout>
         
       </div>

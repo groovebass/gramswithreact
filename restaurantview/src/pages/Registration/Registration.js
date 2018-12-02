@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Button, Row, Col} from 'antd';
+import { Form, Input, Button, Row, Col} from 'antd';
 import styleRegis from './style';
 
 import Pitch from '../../components/Pitch/Pitch';
@@ -12,9 +12,43 @@ class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      confirmDirty: false
     }
   }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      } else {
+        const { firstName, lastName, username, password, email, phone } = values;
+      }
+    });
+  }
+
+  handleConfirmBlur = e => {
+    const value = e.target.value;
+    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+  }
+
+  compareToFirstPassword = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('Two passwords that you enter is inconsistent!');
+    } else {
+      callback();
+    }
+  }
+
+  validateToNextPassword = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && this.state.confirmDirty) {
+      form.validateFields(['confirm'], { force: true });
+    }
+    callback();
+  }
+
 
   render () {
     const { getFieldDecorator } = this.props.form;

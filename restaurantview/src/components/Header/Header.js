@@ -38,7 +38,7 @@ const HeaderDiv = props => (
                                             <Link to="/register"><h4>Create an Account</h4></Link>
                                         </span>
                                         <span>
-                                            <h4 style={style.navDiv}>Login</h4>
+                                            <Link to="/login"><h4 style={style.navDiv}>Login</h4></Link>
                                         </span>
                                     </div>
                                 );
