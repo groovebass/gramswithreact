@@ -10,6 +10,20 @@ constructor (props) {
 
     }
 }
+
+handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+        const { username, password } = values;
+        this.props.login(username, password);
+      } 
+    });
+  }
+
+
+
 render () {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -20,7 +34,7 @@ render () {
                     onClose={this.props.onClose}
                     visible={this.props.visible}
                 >
-                    <Form onSubmit={this.handleLoginSubmit}>
+                    <Form onSubmit={this.handleSubmit}>
                         <Row gutter={8}>
                             <Col span={12}>
                                 <FormItem
@@ -38,11 +52,9 @@ render () {
                                     label="Password"
                                 >
                                     {getFieldDecorator('password', {
-                                    rules: [{
+                                    rules: {
                                         required: true, message: 'Please input your password!',
-                                    }, {
-                                        validator: this.validateToNextPassword,
-                                    }],
+                                    }
                                     })(
                                     <Input type="password" />
                                     )}

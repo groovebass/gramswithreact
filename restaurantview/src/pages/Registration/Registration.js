@@ -20,9 +20,15 @@ class RegistrationForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-      } else {
         const { firstName, lastName, username, password, email, phone } = values;
+
+        const signUpData = {firstName, lastName, username, password};
+        const adminData = {
+          adminName: `${firstName} ${lastName}`,
+          adminPhone: phone,
+          adminEmail: email
+        };
+        this.props.signUp(signUpData, adminData);
       }
     });
   }
@@ -62,7 +68,7 @@ class RegistrationForm extends React.Component {
         <Row gutter={16}>
           <Col span={12}>
             <div style={styleRegis.imgBg}>
-              <img alt="people-dinin" src="https://images.unsplash.com/photo-1520209268518-aec60b8bb5ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b2b04f771779f9ce281cb3e6035f360e&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" style={styleRegis.image}/>
+              <img alt="people-dining" src="https://images.unsplash.com/photo-1520209268518-aec60b8bb5ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b2b04f771779f9ce281cb3e6035f360e&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" style={styleRegis.image}/>
             </div>
             <Pitch />
           </Col>

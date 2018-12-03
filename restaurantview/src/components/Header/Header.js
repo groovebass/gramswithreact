@@ -26,7 +26,7 @@ const HeaderDiv = props => (
                             if (props.loggedIn) {
                                 return (
                                     <div style={style.nav}>
-                                        <span style={style.navDiv}>
+                                        <span style={style.navDiv} onClick={props.logout}>
                                             <h4>Logout</h4>
                                         </span>
                                     </div>

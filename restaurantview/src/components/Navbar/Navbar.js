@@ -8,7 +8,6 @@ const Navbar = props => (
     theme="light"
     mode="vertical"
     style={style.header}
-    inlineCollapsed={props.collapsed}
     >
         <Menu.Item key="1">
             <Icon type="book" style={style.icon}/>

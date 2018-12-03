@@ -27,7 +27,7 @@ module.exports = {
             .then(dbAdmin => {
                 const adminId = dbAdmin._id;
                 return db.User
-                    .findByIdAndUpdate(req.params.id, {$set: {administrator: adminId}})
+                    .findByIdAndUpdate(req.params.id, {$push: {administrator: adminId}})
             })
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
