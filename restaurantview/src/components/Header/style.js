@@ -41,6 +41,9 @@ const styleHeader = {
     helloUser: {
         marginLeft: "10px",
         color: "rgba(92, 77, 92, 1)"
+    },
+    button: {
+        border: "none"
     }
 }
 

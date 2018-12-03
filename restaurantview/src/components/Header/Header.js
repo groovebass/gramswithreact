@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Row, Col} from 'antd';
+import { Layout, Menu, Row, Col, Button} from 'antd';
 import style from './style';
 import gramsLogo from "./images/grams-logo.png";
 
@@ -17,7 +17,7 @@ const HeaderDiv = props => (
                 </Col>
                 <Col span={15}>
                     <div style={style.helloUser}>
-                        {(props.loggedIn) ? <h4>Hello User</h4> : <h4>Restaurant Management Made Easy</h4>}
+                        {(props.loggedIn) ? <h4>{`Hello ${props.user.firstName}`}</h4> : <h4>Restaurant Management Made Easy</h4>}
                         
                     </div>
                 </Col>
@@ -26,9 +26,9 @@ const HeaderDiv = props => (
                             if (props.loggedIn) {
                                 return (
                                     <div style={style.nav}>
-                                        <span style={style.navDiv} onClick={props.logout}>
-                                            <h4>Logout</h4>
-                                        </span>
+                                        <div style={style.navDiv}>
+                                            <Link to="/register"><Button style={style.button} onClick={props.logout}><h4>Logout</h4></Button></Link>
+                                        </div>
                                     </div>
                                 );
                             } else {
@@ -37,8 +37,8 @@ const HeaderDiv = props => (
                                         <span style={style.navDiv}>
                                             <Link to="/register"><h4>Create an Account</h4></Link>
                                         </span>
-                                        <span>
-                                            <Link to="/login"><h4 style={style.navDiv}>Login</h4></Link>
+                                        <span style={style.navDiv}>
+                                            <Button style={style.button} onClick={props.login}><h4>Login</h4></Button>
                                         </span>
                                     </div>
                                 );

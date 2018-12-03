@@ -2,7 +2,7 @@
   "name": "restaurantview",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:3001/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "antd": "^3.10.9",
     "axios": "^0.18.0",

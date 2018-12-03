@@ -26,8 +26,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-		Auth.getUser().then(response => {
-			console.log(response.data);
+		this.getUser();
+  }
+  
+  getUser = () => {
+    Auth.getUser().then(response => {
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -40,10 +43,6 @@ class App extends Component {
 				});
 			}
 		})
-	}
-
-  loginDrawerOnClose = () => {
-    this.setState({loginVisibility: !this.state.loginVisibility})
   }
 
   signUp = (signUpData, adminData) => {
@@ -53,37 +52,40 @@ class App extends Component {
         return API.createAdmin(id, adminData);
       })
       .then(user => {
-        console.log("userWithAdmin", user.data)
         const { username, password } = signUpData;
         return Auth.login(username, password);
       })
-      .then(user => this.setState({user: user.data, loggedIn: true}))
+      .then(response => this.setState({user: response.data.user, loggedIn: true}))
       .catch(err => console.log(err));
   }
 
   login = (username, password) => {
     Auth.login(username, password)
-      .then(user => this.setState({user: user.data, loggedIn: true}))
+      .then(response => this.setState({user: response.data.user, loggedIn: true, loginVisibility: false}))
   }
 
   logout = () => {
-    Auth.logout();
+    Auth.logout()
+      .then(response => {
+        this.setState({user: null, loggedIn: false});
+      })
   }
 
-
-
+  onClose = () => {
+    this.setState({loginVisibility: false})
+  }
   onCollapse = () => {
     this.setState({collapsed: !this.state.collapsed})
   }
 
   render() {
-    console.log(this.state.user);
+    console.log("User", this.state.user);
     console.log("LoggedIn", this.state.loggedIn)
     return (
       <div className="App">
       {!this.state.loggedIn && (
         <Layout>
-          <Header loggedIn={this.state.loggedIn}/>
+          <Header user={this.state.user} loggedIn={this.state.loggedIn}/>
           <Layout>
             <Sider width={200} 
               collapsible
@@ -98,17 +100,17 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" render={() => <Home user={this.state.user}/>} />
                   <Route exact path="/register" render={() => <Registration signUp={this.signUp}/>} />
-                  <Route exact path="/login" render={() => <Login onClose={this.loginDrawerOnClose} visible={this.state.loginVisibility} login={this.login} />} />
                 </Switch>
               </Content>
             </Layout>
+            <Login login={this.login} onClose={this.onClose} visible={this.state.loginVisibility}/>
           </Layout>
         </Layout>
       )}
 
       {this.state.loggedIn && (
         <Layout>
-          <Header loggedIn={this.state.loggedIn} logout={this.logout}/>
+          <Header user={this.state.user} loggedIn={this.state.loggedIn} logout={this.logout}/>
           <Layout>
             <Sider width={200} 
               collapsible
