@@ -98,7 +98,7 @@ class App extends Component {
             <Layout style={{ padding: "0 24px 24px" }}>
               <Content style={styleApp.content}>
                 <Switch>
-                  <Route exact path="/" render={() => <Home user={this.state.user}/>} />
+                  <Redirect from="/" to="/register" />
                   <Route exact path="/register" render={() => <Registration signUp={this.signUp}/>} />
                 </Switch>
               </Content>
@@ -123,6 +123,7 @@ class App extends Component {
             <Layout style={{ padding: "0 24px 24px" }}>
               <Content style={styleApp.content}>
                 <Switch>
+                  <Redirect from="/register" to="/" />
                   <Route exact path="/" render={() => <Home user={this.state.user}/>} />
                 </Switch>
               </Content>
